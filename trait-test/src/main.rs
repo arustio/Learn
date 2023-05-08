@@ -58,6 +58,15 @@ pub fn notify5<T, U>(item1: T, item2: U) -> i32
     1
 }
 
+// 可以通过函数返回一个类型，该类型实现了某个特征
+// 这样可以在函数内部实现特征
+// 只能返回一个特征，不能返回多个特征，否则会报错
+// 应用场景为：有些类型非常复杂，要自己实现一下很难，用这样的方法可以更简单的返回特征
+fn return_summarizable() -> impl Summary {
+    Post{title: "Rust语言简介".to_string(),author: "Sunface".to_string(), content: "Rust棒极了!".to_string()}
+}
+
+
 fn main() {
     let post = Post{title: "Rust语言简介".to_string(),author: "Sunface".to_string(), content: "Rust棒极了!".to_string()};
     let weibo = Weibo{username: "sunface".to_string(),content: "好像微博没Tweet好用".to_string()};
